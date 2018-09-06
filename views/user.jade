@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  h1= title
+  p this is #{title}
+  form(action="/users/process_get" method="GET")
+    input(type="text" name="u_name" placeholder="输入姓名")
+    input(type="text" name="u_age" placeholder="输入年龄")
+    input(type="submit" value="GET提交")
+  br
+  form(action="/users/process_post" method="POST")
+    input(type="text" name="first_name" placeholder="输入first_name")
+    input(type="text" name="last_name" placeholder="输入last_name")
+    input(type="submit" value="POST提交")
+  br
+  form(action="/users/file_upload_single" method="post" enctype="multipart/form-data")
+    input(type="file" name="image" placeholder="单文件上传")
+    input(type="submit" value="单文件文件上传")
+  br
+  form(action="/users/file_upload_multiple" method="post" enctype="multipart/form-data")
+    input(type="file" name="images" multiple="multiple")
+    input(type="submit" value="multiple多文件文件上传")
+  br
+  form(action="/users/file_upload_multiple" method="post" enctype="multipart/form-data")
+    input(type="file" name="images")
+    input(type="file" name="images")
+    input(type="submit" value="同name多文件文件上传")
+  br
+  form(action="/users/file_upload_mixed" method="post" enctype="multipart/form-data")
+    input(type="file" name="avatar")
+    input(type="file" name="avatar")
+    input(type="file" name="gallery")
+    input(type="file" name="gallery")
+    input(type="file" name="gallery")
+    input(type="submit" value="混合上传")
