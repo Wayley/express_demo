@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 // multer中间件
 var multer = require("multer");
-var upload = multer({ dest: 'uploads/' })
+var upload = require('../uploader');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -45,11 +45,11 @@ router.post('/file_upload_multiple', upload.array('images', 3), function (req, r
 })
 // 混合上传
 var cpUpload = upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'gallery', maxCount: 8 }]);
-//一个表单中 name为avatar的input做多可以为1个  name为gallery的input做多可以为3个
+//一个表单中 name为avatar的input做多可以为1个  name为gallery的input做多可以为8个
 router.post('/file_upload_mixed', cpUpload, function (req, res, next) {
   var response = req.files;// 使用的是req.files
   console.log(response, 100);
-  res.send(response);
+  res.send(JSON.stringify(response));
 })
 
 
