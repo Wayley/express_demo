@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 // multer中间件
 var multer = require("multer");
-var upload = require('../uploader');
+var upload = require('../library/uploader');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
